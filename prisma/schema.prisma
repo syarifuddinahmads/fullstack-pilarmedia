@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+model Sales {
+  sales_id       Int       @id @default(autoincrement())
+  sales_date     DateTime
+  sales_amount   Float
+  product_id     Int
+  sales_person_id Int
+  // Relasi dengan tabel Products dan Salespersons
+  product       Products  @relation(fields: [product_id], references: [product_id])
+  sales_person   Salespersons @relation(fields: [sales_person_id], references: [sales_person_id])
+}
+
+model Products {
+  product_id   Int      @id @default(autoincrement())
+  product_name String
+  product_description String
+  product_price Float
+  sales       Sales[]  // Relasi dengan tabel Sales
+}
+
+model Salespersons {
+  sales_person_id   Int      @id @default(autoincrement())
+  sales_person_name String
+  sales_person_phone String
+  sales_person_address String
+  // (Tambahkan kolom-kolom lain sesuai kebutuhan)
+  sales           Sales[]  // Relasi dengan tabel Sales
+}
+
+model User {
+  id       Int @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
