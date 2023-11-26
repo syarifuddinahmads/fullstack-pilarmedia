@@ -24,7 +24,6 @@ model Salespersons {
   sales_person_name String
   sales_person_phone String
   sales_person_address String
-  // (Tambahkan kolom-kolom lain sesuai kebutuhan)
   sales           Sales[]  // Relasi dengan tabel Sales
 }
 
