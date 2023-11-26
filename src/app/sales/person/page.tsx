@@ -3,8 +3,22 @@ import { useEffect, useState } from 'react';
 import Api from '@/lib/axios';
 import { Sales, SalesPerson } from '@/lib/type';
 import Header from '@/components/header.components';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const Salespersons = () => {
+
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'loading') return; 
+
+    if (!session) {
+      router.replace('/login');
+    }
+  }, [session, status, router]);
+
   const [salespersons, setSalespersons] = useState<SalesPerson[]>([]);
   const [newSalesperson, setNewSalesperson] = useState({
     sales_person_id:0,

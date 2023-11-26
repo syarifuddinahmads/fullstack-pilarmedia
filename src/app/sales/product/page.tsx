@@ -3,8 +3,22 @@ import { useEffect, useState } from "react";
 import { Product } from "@/lib/type";
 import Api from "@/lib/axios";
 import Header from "@/components/header.components";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Products = () => {
+
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'loading') return; 
+
+    if (!session) {
+      router.replace('/login');
+    }
+  }, [session, status, router]);
+
   const [products, setProducts] = useState<Product[]>([]);
   const [newProduct, setNewProduct] = useState({
     product_id:0,

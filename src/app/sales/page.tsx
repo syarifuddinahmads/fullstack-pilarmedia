@@ -3,10 +3,23 @@
 import Header from "@/components/header.components";
 import Api from "@/lib/axios";
 import { Sales } from "@prisma/client";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Sales() {
+
+    const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'loading') return; 
+
+    if (!session) {
+      router.replace('/login');
+    }
+  }, [session, status, router]);
 
     const [salesData, setSalesData] = useState<Sales[]>([]);
     const [paginationInfo, setPaginationInfo] = useState({});

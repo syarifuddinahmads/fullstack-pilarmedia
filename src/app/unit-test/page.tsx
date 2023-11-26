@@ -1,6 +1,20 @@
+'use client'
 import Header from "@/components/header.components";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function UnitTest(){
+    const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'loading') return; 
+
+    if (!session) {
+      router.replace('/login');
+    }
+  }, [session, status, router]);
     return (
         <>
         <Header/>
