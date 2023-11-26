@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Api from '@/lib/axios';
 import { Sales, SalesPerson } from '@/lib/type';
+import Header from '@/components/header.components';
 
 const Salespersons = () => {
   const [salespersons, setSalespersons] = useState<SalesPerson[]>([]);
@@ -96,6 +97,7 @@ const Salespersons = () => {
 
   return (
     <div>
+       <Header/>
       <h1>Salespersons Page</h1>
       <div>
         <h2>Create New Salesperson</h2>

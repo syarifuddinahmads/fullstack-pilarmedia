@@ -7,12 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node prisma/seeders/seeder.js"
+    "seed": "node prisma/seeders/seeder.js",
+    "test": "jest"
   },
   "dependencies": {
     "@prisma/client": "^5.6.0",
     "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",
+    "luxon": "^3.4.4",
     "next": "13.5.6",
     "next-auth": "^4.24.5",
     "react": "^18",
@@ -24,6 +26,7 @@
     "@testing-library/react": "^14.1.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/jest": "^29.5.10",
+    "@types/luxon": "^3.3.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

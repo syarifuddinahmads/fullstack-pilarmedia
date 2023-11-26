@@ -81,41 +81,49 @@ export const DependentDropdown = () => {
 
     return (
         <>
-            <select onChange={selectProvince} value={idProvince}>
-                <option value="">--- Select Provincies ---</option>
-                {provincies.map((data) => (
-                    <option value={data.id} key={data.id}>
-                        {data.name}
-                    </option>
-                ))}
-            </select>
+            <div className="my-4">
+                <select onChange={selectProvince} value={idProvince}>
+                    <option value="">--- Select Provincies ---</option>
+                    {provincies.map((data) => (
+                        <option value={data.id} key={data.id}>
+                            {data.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
 
-            <select onChange={selectRegency} value={idRegency}>
-                <option value="">--- Select Regency ---</option>
-                {regencies.map((data) => (
-                    <option value={data.id} key={data.id}>
-                        {data.name}
-                    </option>
-                ))}
-            </select>
+            <div className="my-4">
+                <select onChange={selectRegency} value={idRegency}>
+                    <option value="">--- Select Regency ---</option>
+                    {regencies.map((data) => (
+                        <option value={data.id} key={data.id}>
+                            {data.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
 
-            <select onChange={selectDistrict} value={idDistrict}>
-                <option value="">--- Select District ---</option>
-                {districts.map((data) => (
-                    <option value={data.id} key={data.id}>
-                        {data.name}
-                    </option>
-                ))}
-            </select>
+            <div className="my-4">
+                <select onChange={selectDistrict} value={idDistrict}>
+                    <option value="">--- Select District ---</option>
+                    {districts.map((data) => (
+                        <option value={data.id} key={data.id}>
+                            {data.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
 
-            <select>
-                <option value="">--- Select Village ---</option>
-                {villages.map((data) => (
-                    <option value={data.id} key={data.id}>
-                        {data.name}
-                    </option>
-                ))}
-            </select>
+            <div className="my-4">
+                <select>
+                    <option value="">--- Select Village ---</option>
+                    {villages.map((data) => (
+                        <option value={data.id} key={data.id}>
+                            {data.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
         </>
     );
 };

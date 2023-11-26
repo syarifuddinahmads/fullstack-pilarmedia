@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Product } from "@/lib/type";
 import Api from "@/lib/axios";
+import Header from "@/components/header.components";
 
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -99,6 +100,7 @@ const Products = () => {
 
   return (
     <div>
+       <Header/>
       <h1>Product Page</h1>
       <div>
         <h2>Create New Product</h2>
